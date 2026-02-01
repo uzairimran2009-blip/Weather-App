@@ -2,10 +2,9 @@ function weatherData() {
     let cityName = document.getElementById("cityName").value;
     let weatherIcon = document.getElementById("weatherIcon");
 
-    fetch(`http://api.weatherapi.com/v1/current.json?key=33d111d46f9643febc691613262601&q=${cityName}`).then(function (res) {
+    fetch(`https://api.weatherapi.com/v1/current.json?key=33d111d46f9643febc691613262601&q=${cityName}`).then(function (res) {
         return res.json()
     }).then(function (response) {
-        console.log(response)
         weatherIcon.innerHTML = `<img src="https:${response.current.condition.icon}" alt="weather icon">`
         let temp_c = response.current.temp_c;
         document.getElementById("temp_c").innerText = `${temp_c}°C`
@@ -30,4 +29,5 @@ function weatherData() {
     }).catch((error) => {
         console.log("Err", error)
     })
+
 }
